@@ -6,8 +6,10 @@ import { useState, useRef } from "react";
 
 
 export default function Calculator() {
-    const [volume, setVolume] = useState('');
-    const [collateral, setCollateral] = useState('');
+    const [volumeString, setVolumeString] = useState('');
+    const [collateralString, setCollateralString] = useState('');
+    const volume = useRef(0);
+    const collateral = useRef(0);
     const [payoutString, setPayoutString] = useState('');
     const start = useRef(routes[0]);
     const destination = useRef(routes[0]);
@@ -19,13 +21,21 @@ export default function Calculator() {
         return false;
     }
 
+    function formatNumber(number: number): string {
+        let numberString = number.toString()
+        while (numberString[0] === '0') {
+            numberString = numberString.slice(1)
+        }
+        numberString = numberString.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        return numberString === 'NaN' ? '' : numberString;
+    }
+
     function setPayout(event: any): void {
         event.preventDefault();
-        const parsedVolume = volume ? parseInt(volume) : 0;
-        const parsedCollateral = collateral ? parseInt(collateral) : 0;
+        const parsedVolume = volumeString ? volume.current : 0;
+        const parsedCollateral = collateralString ? collateral.current : 0;
         const rate = start.current.cost >= destination.current.cost ? start.current.cost : destination.current.cost;
         const payout = (rate * parsedVolume) + (0.03 * parsedCollateral);
-        console.log(payout, rate, volume, collateral)
         setPayoutString(JSON.stringify(payout).split('.')[0]);
     }
 
@@ -33,7 +43,8 @@ export default function Calculator() {
         event.preventDefault();
         const lastDigit = event.target.value[event.target.value.length - 1];
         if (isCharacterValid(lastDigit)) {
-            setVolume(event.target.value);
+            volume.current = parseInt(event.target.value.replace(',', ''));
+            setVolumeString(formatNumber(volume.current))
         }
     }
 
@@ -41,7 +52,8 @@ export default function Calculator() {
         event.preventDefault();
         const lastDigit = event.target.value[event.target.value.length - 1];
         if (isCharacterValid(lastDigit)) {
-            setCollateral(event.target.value);
+            collateral.current = parseInt(event.target.value.replace(/\,/g,''));
+            setCollateralString(formatNumber(collateral.current))
         }
     }
 
@@ -62,10 +74,6 @@ export default function Calculator() {
     return (
         <div className={styles.calculator}>
             <form className={styles.form} onSubmit={setPayout}>
-
-                <div className={`${styles.entry} ${styles.entry_span}`}>
-                    <h3>TSC Freight Co.</h3>
-                </div>
 
                 <div className={styles.entry}>
                     <label htmlFor="start">Pickup station: </label>
@@ -94,19 +102,21 @@ export default function Calculator() {
                 </div>
 
                 <div className={styles.entry}>
-                    <input type="text" placeholder="Volume (m3)" className={styles.text_box} value={volume} onChange={changeVolume}></input>
+                    <label htmlFor="volume">Volume (m3): </label>
+                    <input name="volume" type="text" placeholder="Volume (m3)" className={styles.text_box} value={volumeString} onChange={changeVolume}></input>
                 </div>
 
                 <div className={styles.entry}>
-                    <input type="text" placeholder="Collateral (ISK)" className={styles.text_box} value={collateral} onChange={changeCollateral}></input>
+                <label htmlFor="collateral">Collateral (ISK): </label>
+                    <input name="collateral" type="text" placeholder="Collateral (ISK)" className={styles.text_box} value={collateralString} onChange={changeCollateral}></input>
                 </div>
 
-                <div className={styles.entry}>
-                    <button type="submit" onClick={setPayout}>Get reward price</button>
+                <div className={`${styles.entry} ${styles.entry_span}`}>
+                    <button className={styles.submit_button} type="submit" onClick={setPayout}>Get reward price</button>
                 </div>
 
-                <div className={styles.payout}>
-                    {payoutString ? payoutString + ' ISK' : ''}
+                <div className={`${styles.entry} ${styles.entry_span}`}>
+                    {payoutString.length > 1 ? formatNumber(parseInt(payoutString)) + ' ISK' : ''}
                 </div>
 
             </form>

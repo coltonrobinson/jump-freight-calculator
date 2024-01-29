@@ -6,8 +6,7 @@
   left: 0;
   background-image: url("./images/nomad-bg.jpg");
   width: 100vw;
-  overflow: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: large;
 }
@@ -16,7 +15,16 @@
   border: 2px black solid;
   border-radius: 4px;
   margin: 5vh 10vw;
-  width: 78vw;
+  width: 79vw;
   background-color: #a5a5a5;
   padding: 10px;
+}
+
+.title {
+  text-align: center;
+  border: 2px black solid;
+  border-radius: 4px;
+  margin: 5vh 25vw;
+  width: 50vw;
+  background-color: #a5a5a5;
 }

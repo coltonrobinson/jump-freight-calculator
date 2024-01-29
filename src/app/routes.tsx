@@ -2,17 +2,12 @@ const routes = [
     {
         system: 'Jita',
         station: 'IV Moon 4 - Caldari Navy Assembly Plant',
-        cost: 1500,
-    },
-    {
-        system: 'RT-9WL',
-        station: 'Lich\'s Summer Home',
-        cost: 1500,
+        cost: 1250,
     },
     {
         system: 'U0W-DR',
         station: 'Castle LICHtenstein',
-        cost: 1000,
+        cost: 1250,
     },
 ]
 
