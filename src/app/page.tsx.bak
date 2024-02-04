@@ -8,7 +8,7 @@ export default function Home() {
 
 
         <div className={styles.title}>
-          <h3>TSC Freight Co.</h3>
+          <h3>Jita Jump Junkies - JF Delivery Service</h3>
         </div>
 
         <div className={styles.scroll_card}>
