@@ -6,8 +6,8 @@ import Head from "next/head";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Jita Jump Junkies - JF Delivery Service",
-  description: "Calculate your shipping costs to Null Sec Destinations!",
+  title: "TSC Freight Co.",
+  description: "Calculate your shipping costs all over New Eden!",
 };
 
 export default function RootLayout({

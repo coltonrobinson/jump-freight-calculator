@@ -107,7 +107,7 @@ export default function Calculator() {
                 </div>
 
                 <div className={styles.entry}>
-                <label htmlFor="collateral">Collateral (ISK) [3% Collateral Value]: </label>
+                <label htmlFor="collateral">Collateral (ISK) [Add 3% Collateral Value]: </label>
                     <input name="collateral" type="text" placeholder="Collateral (ISK)" className={styles.text_box} value={collateralString} onChange={changeCollateral}></input>
                 </div>
 
