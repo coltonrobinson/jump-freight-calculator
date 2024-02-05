@@ -124,8 +124,7 @@ export default function Calculator() {
                 </div>
 				
 				<div className={styles.entry}>
-					<h5>Contract Expiration: 3 Days</h5>
-					<h5>Days to Complete: 7 Days</h5>
+					<h5>3 Day Expiration / 7 Days to Complete</h5>
                 </div>
 
             </form>
