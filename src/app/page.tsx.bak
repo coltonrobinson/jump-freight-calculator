@@ -23,7 +23,7 @@ export default function Home() {
 			<h5>Contract Expiration: 3 Days</h5>
 			<h5>Days to Complete: 7 Days
 		  </div>
-		</div>
+        </div>
       </div>
     </>
   );

@@ -15,15 +15,6 @@ export default function Home() {
           <Calculator />
         </div>
 		
-		<div className={styles.scroll_card}>
-          <div className={styles.entry}> 
-			<h5>Make contracts out to corporation: Jita Jump Junkies</h5>
-		  </div>
-		  <div className={styles.entry}> 
-			<h5>Contract Expiration: 3 Days</h5>
-			<h5>Days to Complete: 7 Days
-		  </div>
-        </div>
       </div>
     </>
   );

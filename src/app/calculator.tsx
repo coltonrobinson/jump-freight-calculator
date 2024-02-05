@@ -118,6 +118,15 @@ export default function Calculator() {
                 <div className={`${styles.entry} ${styles.entry_span}`}>
                     {payoutString.length > 1 ? formatNumber(parseInt(payoutString)) + ' ISK' : ''}
                 </div>
+				
+				<div className={styles.entry}>
+					<h5>Please make contracts out to Corporation: Jita Jump Junkies</h5>
+                </div>
+				
+				<div className={styles.entry}>
+					<h5>Contract Expiration: 3 Days</h5>
+					<h5>Days to Complete: 7 Days</h5>
+                </div>
 
             </form>
         </div>
