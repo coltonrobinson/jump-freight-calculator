@@ -121,6 +121,7 @@ export default function Calculator() {
 				
 				<div className={styles.entry}>
 					<h5>Please make contracts out to Corporation: Jita Jump Junkies</h5>
+					<h5>To get service to your Citadel, Contact Silvitne</h5>
                 </div>
 				
 				<div className={styles.entry}>
